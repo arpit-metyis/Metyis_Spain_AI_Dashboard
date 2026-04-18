@@ -1,0 +1,252 @@
+/* ─── Data Visualization Color Tokens ─────────────────────────────────
+ *  Single source of truth for all chart / graph colors.
+ *  Based on IBM Carbon Charts' official palette — perceptually tested,
+ *  colorblind-safe, with proper light/dark theme variants.
+ *
+ *  Palettes:
+ *    cat-NN            Categorical  (14 Carbon hues)
+ *    seq-{ramp}-NN     Sequential   (4 ramps: blue/purple/cyan/teal)
+ *    seq-NN            Sequential default alias → blue
+ *    div-{ramp}-NN     Diverging    (2 ramps: rc=redCyan, pt=purpleTeal)
+ *    div-NN            Diverging default alias → purpleTeal
+ *    semantic           positive / negative / warning / neutral / info
+ * ──────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Categorical — 14 Carbon hues (dark theme) ── */
+  --color-dataviz-cat-01: #8a3ffc;
+  --color-dataviz-cat-02: #33b1ff;
+  --color-dataviz-cat-03: #009d9a;
+  --color-dataviz-cat-04: #ff7eb6;
+  --color-dataviz-cat-05: #ff8389;
+  --color-dataviz-cat-06: #fff1f1;
+  --color-dataviz-cat-07: #6fdc8c;
+  --color-dataviz-cat-08: #4589ff;
+  --color-dataviz-cat-09: #d12771;
+  --color-dataviz-cat-10: #d2a106;
+  --color-dataviz-cat-11: #08bdba;
+  --color-dataviz-cat-12: #bae6ff;
+  --color-dataviz-cat-13: #ba4e00;
+  --color-dataviz-cat-14: #d4bbff;
+
+  /* ── Semantic ── */
+  --color-dataviz-positive: #6fdc8c;
+  --color-dataviz-negative: #ff8389;
+  --color-dataviz-warning:  #fddc69;
+  --color-dataviz-neutral:  #8896ab;
+  --color-dataviz-info:     #4589ff;
+
+  /* ── Sequential: blue (10 steps, dark) ── */
+  --color-dataviz-seq-blue-01: #001141;
+  --color-dataviz-seq-blue-02: #001d6c;
+  --color-dataviz-seq-blue-03: #002d9c;
+  --color-dataviz-seq-blue-04: #0043ce;
+  --color-dataviz-seq-blue-05: #0f62fe;
+  --color-dataviz-seq-blue-06: #4589ff;
+  --color-dataviz-seq-blue-07: #78a9ff;
+  --color-dataviz-seq-blue-08: #a6c8ff;
+  --color-dataviz-seq-blue-09: #d0e2ff;
+  --color-dataviz-seq-blue-10: #edf5ff;
+
+  /* ── Sequential: purple (10 steps, dark) ── */
+  --color-dataviz-seq-purple-01: #1c0f30;
+  --color-dataviz-seq-purple-02: #31135e;
+  --color-dataviz-seq-purple-03: #491d8b;
+  --color-dataviz-seq-purple-04: #6929c4;
+  --color-dataviz-seq-purple-05: #8a3ffc;
+  --color-dataviz-seq-purple-06: #a56eff;
+  --color-dataviz-seq-purple-07: #be95ff;
+  --color-dataviz-seq-purple-08: #d4bbff;
+  --color-dataviz-seq-purple-09: #e8daff;
+  --color-dataviz-seq-purple-10: #f6f2ff;
+
+  /* ── Sequential: cyan (9 steps, dark) ── */
+  --color-dataviz-seq-cyan-01: #012749;
+  --color-dataviz-seq-cyan-02: #003a6d;
+  --color-dataviz-seq-cyan-03: #00539a;
+  --color-dataviz-seq-cyan-04: #0072c3;
+  --color-dataviz-seq-cyan-05: #1192e8;
+  --color-dataviz-seq-cyan-06: #33b1ff;
+  --color-dataviz-seq-cyan-07: #82cfff;
+  --color-dataviz-seq-cyan-08: #bae6ff;
+  --color-dataviz-seq-cyan-09: #e5f6ff;
+
+  /* ── Sequential: teal (9 steps, dark) ── */
+  --color-dataviz-seq-teal-01: #022b30;
+  --color-dataviz-seq-teal-02: #004144;
+  --color-dataviz-seq-teal-03: #005d5d;
+  --color-dataviz-seq-teal-04: #007d79;
+  --color-dataviz-seq-teal-05: #009d9a;
+  --color-dataviz-seq-teal-06: #08bdba;
+  --color-dataviz-seq-teal-07: #3ddbd9;
+  --color-dataviz-seq-teal-08: #9ef0f0;
+  --color-dataviz-seq-teal-09: #d9fbfb;
+
+  /* ── Sequential default alias → blue ── */
+  --color-dataviz-seq-01: var(--color-dataviz-seq-blue-01);
+  --color-dataviz-seq-02: var(--color-dataviz-seq-blue-02);
+  --color-dataviz-seq-03: var(--color-dataviz-seq-blue-03);
+  --color-dataviz-seq-04: var(--color-dataviz-seq-blue-04);
+  --color-dataviz-seq-05: var(--color-dataviz-seq-blue-05);
+  --color-dataviz-seq-06: var(--color-dataviz-seq-blue-06);
+  --color-dataviz-seq-07: var(--color-dataviz-seq-blue-07);
+  --color-dataviz-seq-08: var(--color-dataviz-seq-blue-08);
+  --color-dataviz-seq-09: var(--color-dataviz-seq-blue-09);
+  --color-dataviz-seq-10: var(--color-dataviz-seq-blue-10);
+
+  /* ── Diverging: redCyan (15 steps, dark) ── */
+  --color-dataviz-div-rc-01: #fff1f1;
+  --color-dataviz-div-rc-02: #ffd7d9;
+  --color-dataviz-div-rc-03: #ffb3b8;
+  --color-dataviz-div-rc-04: #ff8389;
+  --color-dataviz-div-rc-05: #fa4d56;
+  --color-dataviz-div-rc-06: #da1e28;
+  --color-dataviz-div-rc-07: #750e13;
+  --color-dataviz-div-rc-08: #343a3f;
+  --color-dataviz-div-rc-09: #003a6d;
+  --color-dataviz-div-rc-10: #00539a;
+  --color-dataviz-div-rc-11: #0072c3;
+  --color-dataviz-div-rc-12: #1192e8;
+  --color-dataviz-div-rc-13: #33b1ff;
+  --color-dataviz-div-rc-14: #82cfff;
+  --color-dataviz-div-rc-15: #003a6d;
+
+  /* ── Diverging: purpleTeal (15 steps, dark) ── */
+  --color-dataviz-div-pt-01: #f6f2ff;
+  --color-dataviz-div-pt-02: #d4bbff;
+  --color-dataviz-div-pt-03: #a56eff;
+  --color-dataviz-div-pt-04: #8a3ffc;
+  --color-dataviz-div-pt-05: #6929c4;
+  --color-dataviz-div-pt-06: #491d8b;
+  --color-dataviz-div-pt-07: #31135e;
+  --color-dataviz-div-pt-08: #343a3f;
+  --color-dataviz-div-pt-09: #004144;
+  --color-dataviz-div-pt-10: #005d5d;
+  --color-dataviz-div-pt-11: #007d79;
+  --color-dataviz-div-pt-12: #009d9a;
+  --color-dataviz-div-pt-13: #08bdba;
+  --color-dataviz-div-pt-14: #3ddbd9;
+  --color-dataviz-div-pt-15: #004144;
+
+  /* ── Diverging default alias → purpleTeal ── */
+  --color-dataviz-div-01: var(--color-dataviz-div-pt-01);
+  --color-dataviz-div-02: var(--color-dataviz-div-pt-02);
+  --color-dataviz-div-03: var(--color-dataviz-div-pt-03);
+  --color-dataviz-div-04: var(--color-dataviz-div-pt-04);
+  --color-dataviz-div-05: var(--color-dataviz-div-pt-05);
+  --color-dataviz-div-06: var(--color-dataviz-div-pt-06);
+  --color-dataviz-div-07: var(--color-dataviz-div-pt-07);
+  --color-dataviz-div-08: var(--color-dataviz-div-pt-08);
+  --color-dataviz-div-09: var(--color-dataviz-div-pt-09);
+  --color-dataviz-div-10: var(--color-dataviz-div-pt-10);
+  --color-dataviz-div-11: var(--color-dataviz-div-pt-11);
+  --color-dataviz-div-12: var(--color-dataviz-div-pt-12);
+  --color-dataviz-div-13: var(--color-dataviz-div-pt-13);
+  --color-dataviz-div-14: var(--color-dataviz-div-pt-14);
+  --color-dataviz-div-15: var(--color-dataviz-div-pt-15);
+}
+
+[data-theme="light"] {
+  /* ── Categorical — 14 Carbon hues (light theme) ── */
+  --color-dataviz-cat-01: #6929c4;
+  --color-dataviz-cat-02: #1192e8;
+  --color-dataviz-cat-03: #005d5d;
+  --color-dataviz-cat-04: #9f1853;
+  --color-dataviz-cat-05: #fa4d56;
+  --color-dataviz-cat-06: #570408;
+  --color-dataviz-cat-07: #198038;
+  --color-dataviz-cat-08: #002d9c;
+  --color-dataviz-cat-09: #ee538b;
+  --color-dataviz-cat-10: #b28600;
+  --color-dataviz-cat-11: #009d9a;
+  --color-dataviz-cat-12: #012749;
+  --color-dataviz-cat-13: #8a3800;
+  --color-dataviz-cat-14: #a56eff;
+
+  /* ── Semantic ── */
+  --color-dataviz-positive: #198038;
+  --color-dataviz-negative: #da1e28;
+  --color-dataviz-warning:  #f1c21b;
+  --color-dataviz-neutral:  #64748b;
+  --color-dataviz-info:     #0043ce;
+
+  /* ── Sequential: blue (10 steps, light) ── */
+  --color-dataviz-seq-blue-01: #edf5ff;
+  --color-dataviz-seq-blue-02: #d0e2ff;
+  --color-dataviz-seq-blue-03: #a6c8ff;
+  --color-dataviz-seq-blue-04: #78a9ff;
+  --color-dataviz-seq-blue-05: #4589ff;
+  --color-dataviz-seq-blue-06: #0f62fe;
+  --color-dataviz-seq-blue-07: #0043ce;
+  --color-dataviz-seq-blue-08: #002d9c;
+  --color-dataviz-seq-blue-09: #001d6c;
+  --color-dataviz-seq-blue-10: #001141;
+
+  /* ── Sequential: purple (10 steps, light) ── */
+  --color-dataviz-seq-purple-01: #f6f2ff;
+  --color-dataviz-seq-purple-02: #e8daff;
+  --color-dataviz-seq-purple-03: #d4bbff;
+  --color-dataviz-seq-purple-04: #be95ff;
+  --color-dataviz-seq-purple-05: #a56eff;
+  --color-dataviz-seq-purple-06: #8a3ffc;
+  --color-dataviz-seq-purple-07: #6929c4;
+  --color-dataviz-seq-purple-08: #491d8b;
+  --color-dataviz-seq-purple-09: #31135e;
+  --color-dataviz-seq-purple-10: #1c0f30;
+
+  /* ── Sequential: cyan (9 steps, light) ── */
+  --color-dataviz-seq-cyan-01: #e5f6ff;
+  --color-dataviz-seq-cyan-02: #bae6ff;
+  --color-dataviz-seq-cyan-03: #82cfff;
+  --color-dataviz-seq-cyan-04: #33b1ff;
+  --color-dataviz-seq-cyan-05: #1192e8;
+  --color-dataviz-seq-cyan-06: #0072c3;
+  --color-dataviz-seq-cyan-07: #00539a;
+  --color-dataviz-seq-cyan-08: #003a6d;
+  --color-dataviz-seq-cyan-09: #012749;
+
+  /* ── Sequential: teal (9 steps, light) ── */
+  --color-dataviz-seq-teal-01: #d9fbfb;
+  --color-dataviz-seq-teal-02: #9ef0f0;
+  --color-dataviz-seq-teal-03: #3ddbd9;
+  --color-dataviz-seq-teal-04: #08bdba;
+  --color-dataviz-seq-teal-05: #009d9a;
+  --color-dataviz-seq-teal-06: #007d79;
+  --color-dataviz-seq-teal-07: #005d5d;
+  --color-dataviz-seq-teal-08: #004144;
+  --color-dataviz-seq-teal-09: #022b30;
+
+  /* ── Diverging: redCyan (15 steps, light) ── */
+  --color-dataviz-div-rc-01: #750e13;
+  --color-dataviz-div-rc-02: #da1e28;
+  --color-dataviz-div-rc-03: #fa4d56;
+  --color-dataviz-div-rc-04: #ff8389;
+  --color-dataviz-div-rc-05: #ffb3b8;
+  --color-dataviz-div-rc-06: #ffd7d9;
+  --color-dataviz-div-rc-07: #fff1f1;
+  --color-dataviz-div-rc-08: #f2f4f8;
+  --color-dataviz-div-rc-09: #e5f6ff;
+  --color-dataviz-div-rc-10: #bae6ff;
+  --color-dataviz-div-rc-11: #82cfff;
+  --color-dataviz-div-rc-12: #33b1ff;
+  --color-dataviz-div-rc-13: #1192e8;
+  --color-dataviz-div-rc-14: #0072c3;
+  --color-dataviz-div-rc-15: #00539a;
+
+  /* ── Diverging: purpleTeal (15 steps, light) ── */
+  --color-dataviz-div-pt-01: #491d8b;
+  --color-dataviz-div-pt-02: #6929c4;
+  --color-dataviz-div-pt-03: #8a3ffc;
+  --color-dataviz-div-pt-04: #a56eff;
+  --color-dataviz-div-pt-05: #d4bbff;
+  --color-dataviz-div-pt-06: #e8daff;
+  --color-dataviz-div-pt-07: #f6f2ff;
+  --color-dataviz-div-pt-08: #f2f4f8;
+  --color-dataviz-div-pt-09: #d9fbfb;
+  --color-dataviz-div-pt-10: #9ef0f0;
+  --color-dataviz-div-pt-11: #3ddbd9;
+  --color-dataviz-div-pt-12: #08bdba;
+  --color-dataviz-div-pt-13: #009d9a;
+  --color-dataviz-div-pt-14: #007d79;
+  --color-dataviz-div-pt-15: #005d5d;
+}

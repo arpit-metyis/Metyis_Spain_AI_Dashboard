@@ -1,0 +1,140 @@
+﻿:root,
+[data-theme="dark"] {
+  /* Background */
+  --color-bg-screen: #262626;
+  --color-bg-card: #333333;
+  --color-bg-card-hover: #3a3a3a;
+  --color-bg-elevated: #404040;
+  --color-bg-input: #2a2a2a;
+  --color-bg-tooltip: #262626;
+  --color-bg-menu: rgba(38, 38, 38, 0.72);
+  --color-bg-menu-hover: rgba(255, 255, 255, 0.08);
+  
+  /* Foreground */
+  --color-fg-default: #ffffff;
+  --color-fg-muted: #a0a0a0;
+  --color-fg-subtle: #6b6b6b;
+  --color-fg-on-accent: #ffffff;
+  
+  /* Stroke */
+  --color-stroke-subtle: #545454;
+  --color-stroke-default: #666666;
+  --color-stroke-strong: #888888;
+  
+  /* Accent */
+  --color-accent: #dc0000;
+  --color-accent-hover: #e83333;
+  --color-edit-pulse: #f08080;
+  
+  /* Status */
+  --color-success: #34dda5;
+  --color-error: #f8555b;
+  --color-warning: #ffba22;
+  --color-neutral: #5c687d;
+  
+  /* Brand */
+  --color-metyis-red: #e30613;
+  --color-brand: var(--color-accent);
+  --color-border-subtle: var(--color-stroke-subtle);
+  
+  /* AI Agents */
+  --color-ai-accent: #a78bfa;
+  --color-ai-bg: #a78bfa0c;
+  --color-ai-border: #a78bfa30;
+
+  /* Radii */
+  --radii-widget: 4px;
+  --radii-button: 4px;
+  --radii-pill: 4px;
+
+  /* Shadows */
+  --shadow-widget: 0 1px 3px rgba(0,0,0,0.24), 0 0 0 1px rgba(255,255,255,0.04);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.04);
+  --shadow-elevated: 0 8px 24px rgba(0,0,0,0.32), 0 0 0 1px rgba(255,255,255,0.06);
+  --shadow-panel: 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  
+  /* Typography */
+  --font-family: 'neue-frutiger-world', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 32px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+  --transition-colors: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="light"] {
+  --color-bg-screen: #f5f5f5;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #f9f9f9;
+  --color-bg-elevated: #ededee;
+  --color-bg-input: #f0f0f0;
+  --color-bg-tooltip: #ffffff;
+  --color-bg-menu: rgba(255, 255, 255, 0.72);
+  --color-bg-menu-hover: rgba(0, 0, 0, 0.06);
+  
+  --color-fg-default: #1a1a1a;
+  --color-fg-muted: #666666;
+  --color-fg-subtle: #999999;
+  --color-fg-on-accent: #ffffff;
+  
+  --color-edit-pulse: #2a5bb8;
+
+  --color-stroke-subtle: #e0e0e0;
+  --color-stroke-default: #cccccc;
+  --color-stroke-strong: #999999;
+
+  --color-ai-accent: #7c3aed;
+  --color-ai-bg: #7c3aed0a;
+  --color-ai-border: #7c3aed20;
+
+  --shadow-widget: 0 1px 3px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.05);
+  --shadow-elevated: 0 8px 24px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.06);
+  --shadow-panel: 0 16px 48px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06);
+}
+
+/* Smooth theme transitions */
+html {
+  transition: var(--transition-colors);
+}
+
+html, body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg-screen);
+  color: var(--color-fg-default);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-stroke-subtle);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-stroke-default);
+}

@@ -1,0 +1,38 @@
+{
+  "name": "metyis-spain-ai-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.34.0",
+    "html-to-image": "^1.11.13",
+    "mssql": "^11.0.1",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-grid-layout": "^2.2.2",
+    "react-simple-maps": "^3.0.0",
+    "recharts": "^3.7.0",
+    "sonner": "^2.0.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/mssql": "^12.3.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/react-grid-layout": "^1.3.6",
+    "@types/react-simple-maps": "^3.0.6",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "playwright": "^1.58.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
