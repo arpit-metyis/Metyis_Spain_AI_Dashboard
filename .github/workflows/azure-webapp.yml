@@ -3,7 +3,7 @@ name: Deploy Metyis Spain AI Dashboard
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 env:
@@ -39,10 +39,12 @@ jobs:
           cp -R .next/standalone/. deploy/
           cp -R .next/static deploy/.next/static
           if [ -d public ]; then cp -R public deploy/public; fi
+          cd deploy
+          zip -r ../deploy.zip .
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: deploy
+          package: deploy.zip
