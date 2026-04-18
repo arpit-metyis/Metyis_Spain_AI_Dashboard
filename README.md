@@ -101,7 +101,7 @@ If the configured model is unavailable, the route retries `openrouter/free`. If 
 
 Target Web App:
 
-[https://metyis-es-genai-app-gecqa0hmhpfnhbbb.westeurope-01.azurewebsites.net/](https://metyis-es-genai-app-gecqa0hmhpfnhbbb.westeurope-01.azurewebsites.net/)
+[https://metyis-spain-ai-dashboard-duf2dsfqgwa3fga7.spaincentral-01.azurewebsites.net/](https://metyis-spain-ai-dashboard-duf2dsfqgwa3fga7.spaincentral-01.azurewebsites.net/)
 
 GitHub Actions deployment is configured in `.github/workflows/azure-webapp.yml`.
 
@@ -113,7 +113,7 @@ AZURE_WEBAPP_PUBLISH_PROFILE
 
 Create it from Azure Portal:
 
-1. Open App Service `metyis-es-genai-app`
+1. Open App Service `metyis-spain-ai-dashboard`
 2. Click **Download publish profile**
 3. In GitHub, open the repository settings
 4. Go to **Secrets and variables** > **Actions**
@@ -136,7 +136,7 @@ NEXT_PUBLIC_APP_NAME="Metyis Spain"
 NEXT_PUBLIC_DEMO_PASSWORD="metyis2026"
 OPENROUTER_API_KEY="<openrouter-api-key>"
 OPENROUTER_MODEL="openrouter/free"
-OPENROUTER_SITE_URL="https://metyis-es-genai-app-gecqa0hmhpfnhbbb.westeurope-01.azurewebsites.net"
+OPENROUTER_SITE_URL="https://metyis-spain-ai-dashboard-duf2dsfqgwa3fga7.spaincentral-01.azurewebsites.net"
 OPENROUTER_APP_NAME="Metyis Spain AI Dashboard"
 ```
 
@@ -149,9 +149,9 @@ Health check path:
 Managed identity SQL permissions:
 
 ```sql
-CREATE USER [metyis-es-genai-app] FROM EXTERNAL PROVIDER;
-ALTER ROLE db_datareader ADD MEMBER [metyis-es-genai-app];
-ALTER ROLE db_datawriter ADD MEMBER [metyis-es-genai-app];
+CREATE USER [metyis-spain-ai-dashboard] FROM EXTERNAL PROVIDER;
+ALTER ROLE db_datareader ADD MEMBER [metyis-spain-ai-dashboard];
+ALTER ROLE db_datawriter ADD MEMBER [metyis-spain-ai-dashboard];
 ```
 
 ## Thumbnails

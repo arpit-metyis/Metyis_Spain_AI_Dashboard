@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: metyis-es-genai-app
+  AZURE_WEBAPP_NAME: metyis-spain-ai-dashboard
   NODE_VERSION: '22.x'
 
 jobs:
