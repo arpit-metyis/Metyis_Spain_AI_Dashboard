@@ -1,7 +1,6 @@
 import type { DashboardTab } from '@/types/dashboard';
 import { buildSavedScenario } from '@/lib/scenario-simulator';
 import type { DashboardRepository, SavedScenario, ScenarioBaseline, ScenarioInput, ScenarioResult, VisualDataParams } from './types';
-import { existsSync } from 'fs';
 
 type MssqlModule = typeof import('mssql');
 type SqlRequest = import('mssql').Request;
@@ -38,9 +37,8 @@ let poolPromise: Promise<import('mssql').ConnectionPool> | null = null;
 function ensureAzureCliOnPath() {
   if (process.platform !== 'win32') return;
   const cliDir = 'C:\\Program Files\\Microsoft SDKs\\Azure\\CLI2\\wbin';
-  const cliPath = `${cliDir}\\az.cmd`;
   const pathValue = process.env.PATH ?? '';
-  if (existsSync(cliPath) && !pathValue.toLowerCase().includes(cliDir.toLowerCase())) {
+  if (!pathValue.toLowerCase().includes(cliDir.toLowerCase())) {
     process.env.PATH = `${pathValue};${cliDir}`;
   }
 }

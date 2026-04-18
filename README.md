@@ -103,22 +103,55 @@ Target Web App:
 
 [https://metyis-es-genai-app-gecqa0hmhpfnhbbb.westeurope-01.azurewebsites.net/](https://metyis-es-genai-app-gecqa0hmhpfnhbbb.westeurope-01.azurewebsites.net/)
 
-Recommended Azure App Service startup command:
+GitHub Actions deployment is configured in `.github/workflows/azure-webapp.yml`.
 
-```bash
-npm run start
+Required GitHub secret:
+
+```text
+AZURE_WEBAPP_PUBLISH_PROFILE
 ```
 
-Build command:
+Create it from Azure Portal:
+
+1. Open App Service `metyis-es-genai-app`
+2. Click **Download publish profile**
+3. In GitHub, open the repository settings
+4. Go to **Secrets and variables** > **Actions**
+5. Add the publish profile XML as `AZURE_WEBAPP_PUBLISH_PROFILE`
+
+The workflow deploys the Next.js standalone output from the `main` branch.
+
+Required Azure App Service startup command:
 
 ```bash
-npm install && npm run build
+node server.js
+```
+
+Required Azure App Service app settings:
+
+```env
+DATA_SOURCE=azure-sql
+AZURE_SQL_CONNECTION_STRING="Server=tcp:metyis-es-genai-app-server.database.windows.net,1433;Initial Catalog=metyis-es-genai-app-database;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=Active Directory Default;"
+NEXT_PUBLIC_APP_NAME="Metyis Spain"
+NEXT_PUBLIC_DEMO_PASSWORD="metyis2026"
+OPENROUTER_API_KEY="<openrouter-api-key>"
+OPENROUTER_MODEL="openrouter/free"
+OPENROUTER_SITE_URL="https://metyis-es-genai-app-gecqa0hmhpfnhbbb.westeurope-01.azurewebsites.net"
+OPENROUTER_APP_NAME="Metyis Spain AI Dashboard"
 ```
 
 Health check path:
 
 ```text
 /api/health
+```
+
+Managed identity SQL permissions:
+
+```sql
+CREATE USER [metyis-es-genai-app] FROM EXTERNAL PROVIDER;
+ALTER ROLE db_datareader ADD MEMBER [metyis-es-genai-app];
+ALTER ROLE db_datawriter ADD MEMBER [metyis-es-genai-app];
 ```
 
 ## Thumbnails
