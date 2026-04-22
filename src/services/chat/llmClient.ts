@@ -122,16 +122,40 @@ function buildMessages(input: unknown): ProviderMessage[] {
 }
 
 function parseStructuredAnswer(content: string): LlmAnswerSchema {
+  const normalized = content.trim().replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```$/i, '').trim();
   try {
-    const parsed = JSON.parse(content) as Partial<LlmAnswerSchema>;
+    const parsed = JSON.parse(normalized) as Partial<LlmAnswerSchema>;
     return {
-      answer: parsed.answer || content,
+      answer: parsed.answer || normalized,
       confidence: parsed.confidence || 'medium',
       caveats: Array.isArray(parsed.caveats) ? parsed.caveats : [],
       followUps: Array.isArray(parsed.followUps) ? parsed.followUps : [],
       assumptions: Array.isArray(parsed.assumptions) ? parsed.assumptions : [],
     };
   } catch {
-    return { answer: content, confidence: 'medium', caveats: [], followUps: [], assumptions: [] };
+    return parseLabeledPlainText(normalized);
   }
+}
+
+function parseLabeledPlainText(content: string): LlmAnswerSchema {
+  const confidence = content.match(/confidence:\s*(high|medium|low)/i)?.[1]?.toLowerCase() as LlmAnswerSchema['confidence'] | undefined;
+  const answer = content
+    .replace(/confidence:\s*(high|medium|low)/ig, '')
+    .replace(/caveats?:\s*/ig, '\nCaveat: ')
+    .replace(/follow-?ups?:\s*/ig, '\nFollow-up: ')
+    .replace(/assumptions?:\s*/ig, '\nAssumption: ')
+    .trim();
+  return {
+    answer,
+    confidence: confidence || 'medium',
+    caveats: collectLabeled(content, 'caveats?'),
+    followUps: collectLabeled(content, 'follow-?ups?'),
+    assumptions: collectLabeled(content, 'assumptions?'),
+  };
+}
+
+function collectLabeled(content: string, label: string) {
+  const match = content.match(new RegExp(`${label}:\\s*([^\\n]+)`, 'i'));
+  if (!match?.[1]) return [];
+  return match[1].split(/[.;]\s*/).map(item => item.trim()).filter(Boolean);
 }

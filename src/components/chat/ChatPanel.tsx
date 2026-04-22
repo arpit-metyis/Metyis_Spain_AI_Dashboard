@@ -99,7 +99,7 @@ export function ChatPanel({ compact }: { compact?: boolean }) {
         }
         if (event.type === 'final') {
           const answer = event.payload.answer;
-          setMessages(current => current.map(message => message.id === assistantId ? { ...message, content: message.content || answer.answer, answer } : message));
+          setMessages(current => current.map(message => message.id === assistantId ? { ...message, content: answer.answer, answer } : message));
           if (answer.followUps.length) setActiveSuggestions(answer.followUps);
         }
         if (event.type === 'error') throw new Error(event.error);

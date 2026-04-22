@@ -75,16 +75,10 @@ async function explain(context: ChatContext, intent: Intent, validated: Validate
 
   try {
     const provider = getLlmProvider();
-    let streamed = '';
-    if (emit) {
-      for await (const token of provider.streamAnswer(input)) {
-        streamed += token;
-        emit({ type: 'token', token });
-      }
-    }
-    const structured = streamed ? fallbackStructured(streamed) : await provider.generateStructuredAnswer(input);
+    const structured = await provider.generateStructuredAnswer(input);
+    if (emit) streamAnswerText(structured.answer, emit);
     return {
-      answer: structured.answer,
+      answer: cleanAnswerText(structured.answer),
       source: validated.source,
       filtersApplied: validated.filtersApplied,
       confidence: structured.confidence || validated.confidence,
@@ -94,6 +88,23 @@ async function explain(context: ChatContext, intent: Intent, validated: Validate
     };
   } catch {
     return buildDeterministicAnswer(context, intent, validated);
+  }
+}
+
+function streamAnswerText(answer: string, emit: (event: ChatProgressEvent | { type: 'token'; token: string }) => void) {
+  const clean = cleanAnswerText(answer);
+  const tokens = clean.split(/(\s+)/).filter(Boolean);
+  for (const token of tokens) emit({ type: 'token', token });
+}
+
+function cleanAnswerText(answer: string) {
+  const trimmed = answer.trim();
+  if (!trimmed.startsWith('{')) return trimmed;
+  try {
+    const parsed = JSON.parse(trimmed) as { answer?: string };
+    return parsed.answer?.trim() || trimmed;
+  } catch {
+    return trimmed;
   }
 }
 
@@ -169,15 +180,5 @@ function finalize(context: ChatContext, intent: Intent, answer: ChatAnswer, quer
     debug: process.env.CHAT_DEBUG === 'true'
       ? { intent, queryPlan, usedConversationSummary: Boolean(context.conversation.summary) }
       : undefined,
-  };
-}
-
-function fallbackStructured(answer: string) {
-  return {
-    answer,
-    confidence: 'medium' as const,
-    caveats: [],
-    followUps: ['Break that down further', 'Compare with previous period', 'Explain the main driver'],
-    assumptions: [],
   };
 }
