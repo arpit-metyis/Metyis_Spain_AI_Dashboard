@@ -14,6 +14,7 @@ A generic consulting and business analytics Control Tower for Metyis Spain. The 
 - Azure Web App health route: `/api/health`
 - Azure SQL schema and seed scripts in `scripts/sql/`
 - AI chat UI powered by OpenRouter through `/api/ai/chat`, with mock fallback
+- Production-oriented conversational BI assistant architecture documented in `docs/conversational-bi-assistant.md`
 
 ## Local setup
 
